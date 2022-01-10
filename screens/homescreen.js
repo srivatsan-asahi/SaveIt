@@ -1,23 +1,40 @@
 import * as React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, Modal, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { INCREASE_COUNTER } from '../redux/action';
-
+import { FAB } from 'react-native-elements';
 const HomeScreen = (props) => {
     const { counter, increaseCount } = props;
+    const [visible, setVisible] = React.useState(true);
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Home!</Text>
             <Text>{counter}</Text>
-            <Button
-                onPress={() => increaseCount()}
-                title="Increase"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-            />
+            <View style={styles.fabStyle}>
+                <FAB
+                    onPress={() => increaseCount()}
+                    icon={{ name: 'add', color: 'white' }}
+                    color="black"
+                />
+            </View>
+
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 50,
+    },
+    fabStyle: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+    }
+
+});
 
 const mapStateToProps = state => {
     console.log(state.CounterReducer.count)

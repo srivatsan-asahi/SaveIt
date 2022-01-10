@@ -32,7 +32,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+        >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Goal" component={SavingComponent} />
         </Tab.Navigator>
@@ -40,6 +41,7 @@ const App = () => {
     </Provider>
   );
 };
+
 
 
 
